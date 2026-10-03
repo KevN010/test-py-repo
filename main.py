@@ -1,8 +1,11 @@
 
 
 
-task_lists = []
+task_list = []
 
+
+
+#Initial task manager showing
 print("===== TASK MANAGER =====")
 
 
@@ -16,14 +19,50 @@ print("5. Quit")
 
 print()
 
-userChoice = int(input("Choose an output:"))
+loop = True
+
+while loop == True:
+    userChoice = input("Choose an output:")
+
+    try:
+        userChoice = int(userChoice)
+    except ValueError:
+        print("Invalid output! (Must be 1-5)")
+
+    print("User picked: " + str(userChoice))
+    print()
+
+    if (userChoice == 1):
+        task_list.append({"taskName": input("Enter task:"), "completed": False})
+    elif(userChoice == 2):
+        print("Your Tasks:")
+        for x in range(len(task_list)):
+            print(str(x + 1) + ": " + task_list[x]["taskName"] + "| Completed: " + str(task_list[x]["completed"]))
+
+    elif(userChoice == 3):
+        for x in range(len(task_list)):
+            print(str(x + 1) + ": " + task_list[x]["taskName"] + "| Completed: " + str(task_list[x]["completed"]))
+        userChoice = int(input("Choose task to complete(" + str(len(task_list)) + " tasks available):" ))
+        
+        task_list[userChoice - 1]["completed"] = True
+
+    elif(userChoice == 5):
+        print("Thank you!")
+        break
+
+    print("===== TASK MANAGER =====")
 
 
-print("User picked: " + str(userChoice))
+    print()
 
-if (userChoice == 1):
-    task_lists.append(input("Enter task:"))
-    
+    print("1. Add task")
+    print("2. View task")
+    print("3. Complete Task")
+    print("4. Delete Task")
+    print("5. Quit")
+
+
+            
 #elif(userChoice == 2):
 #    print()
 #elif(userChoice == 3):
