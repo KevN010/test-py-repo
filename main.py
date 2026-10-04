@@ -6,22 +6,24 @@ task_list = []
 
 
 #Initial task manager showing
-print("===== TASK MANAGER =====")
 
-
-print()
-
-print("1. Add task")
-print("2. View task")
-print("3. Complete Task")
-print("4. Delete Task")
-print("5. Quit")
 
 print()
 
 loop = True
 
 while loop == True:
+        
+    print("===== TASK MANAGER =====")
+
+
+    print()
+
+    print("1. Add task")
+    print("2. View task")
+    print("3. Complete Task")
+    print("4. Delete Task")
+    print("5. Quit")
     userChoice = input("Choose an output:")
 
     try:
@@ -46,20 +48,17 @@ while loop == True:
         
         task_list[userChoice - 1]["completed"] = True
 
+    elif(userChoice == 4):
+        for x in range(len(task_list)):
+            print(str(x + 1) + ": " + task_list[x]["taskName"] + "| Completed: " + str(task_list[x]["completed"]))
+        userChoice = int(input("Choose task to remove(" + str(len(task_list)) + " tasks available):" ))
+
+        task_list.pop(userChoice - 1)
+
     elif(userChoice == 5):
         print("Thank you!")
         break
 
-    print("===== TASK MANAGER =====")
-
-
-    print()
-
-    print("1. Add task")
-    print("2. View task")
-    print("3. Complete Task")
-    print("4. Delete Task")
-    print("5. Quit")
 
 
             
